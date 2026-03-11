@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarhanna · Creative Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Z<span>.</span></a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-subtitle animate-text">Welcome to my world</span>
+            <h1 class="hero-title animate-text">
+                I'm <span class="gradient-text">Zarhanna</span>
+            </h1>
+            <div class="hero-description animate-text">
+                <span class="typed-text"></span><span class="cursor-type">&nbsp;</span>
+            </div>
+            <p class="hero-bio animate-text">Digital artist · Designer · Developer · Crochet artist</p>
+            <div class="hero-cta animate-text">
+                <a href="#works" class="btn primary-btn">View My Work <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn secondary-btn">Let's Talk</a>
+            </div>
+            <div class="hero-social">
+                <a href="https://instagram.com/rn.zhn" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/zarhanna" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="https://github.com/Rei0021" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/zarhanna-abdulharid-0634013b0/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">My Portfolio</span>
+                <h2 class="section-title">Creative Works</h2>
+                <p class="section-subtitle">Photography, graphic designs, layouts, custom logos, apps, digital art, and crocheted works</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photo">Photography</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="digital">Digital Art</button>
+                <button class="filter-btn" data-filter="crochet">Crochet</button>
+            </div>
+
+            <!-- Works Grid -->
+            <div class="works-grid">
+                <!-- Photography Item 1 -->
+                <div class="work-item" 
+                     data-category="photo"
+                     data-category-name="Photography"
+                     data-title="Macro/Close-Up"
+                     data-description="A stunning close-up photograph capturing the intricate details and vibrant colors of red lanterns at night. The play of light and shadow creates a mesmerizing effect."
+                     data-date="2026"
+                     data-tags="Macro, Night Photography, Urban">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/cam5.JPG" alt="Row of red lanterns at night">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Macro/Close-Up</h3>
+                                    <p>Photography · 2026</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Item 2 -->
+                <div class="work-item" 
+                     data-category="photo"
+                     data-category-name="Photography"
+                     data-title="Urban Nocturne"
+                     data-description="Night photography capturing the vibrant energy of Taipei 101 against the dark sky. The city lights create a stunning contrast."
+                     data-date="2025"
+                     data-tags="Night Photography, Cityscape, Architecture">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/cam1.JPG" alt="Taipei 101 skyscraper at night">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Urban Nocturne</h3>
+                                    <p>Photography · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Item 3 -->
+                <div class="work-item" 
+                    data-category="photo"
+                    data-category-name="Photography"
+                    data-title="Tropical Serenity"
+                    data-description="A landscape study capturing the limestone cliffs and crystal-clear waters of Palawan, emphasizing natural lighting and depth."
+                    data-date="2025"
+                    data-tags="Nature, Landscape, Travel">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/cam4.JPG" alt="Palawan">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Tropical Serenity</h3>
+                                    <p>Photography · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Item 4 -->
+               <div class="work-item" 
+                    data-category="photo"
+                    data-category-name="Photography"
+                    data-title="Peak of Heritage"
+                    data-description="An iconic view of Mt. Fuji, focusing on the silhouette and the harmony between the mountain and its surrounding environment."
+                    data-date="2025"
+                    data-tags="Travel, Japan, Landmark">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/cam3.JPG" alt="Japan's Mt. Fuji">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Peak of Heritage</h3>
+                                    <p>Photography · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Item 5 -->
+                <div class="work-item" 
+                    data-category="photo"
+                    data-category-name="Photography"
+                    data-title="Fuji Horizon"
+                    data-description="Exploring a different perspective of Japan's most famous peak, highlighting the atmospheric conditions and scale of the landscape."
+                    data-date="2025"
+                    data-tags="Nature, Landscape, Japan">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/cam2.JPG" alt="Japan's Mt. Fuji">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Fuji Horizon</h3>
+                                    <p>Photography · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Design Item 1 -->
+                <div class="work-item" 
+                    data-category="design"
+                    data-category-name="Design"
+                    data-title="Brand Identity: Outerwear"
+                    data-description="A conceptual varsity jacket design showcasing logo placement and character illustration. Focused on creating a playful, recognizable brand presence through high-quality mockups."
+                    data-date="2024"
+                    data-tags="Branding, Illustration, Fashion">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/brand0.PNG" alt="Fluff and Crumb Varsity Jacket">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Outerwear Concept</h3>
+                                    <p>Design · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Design Item 2 -->
+                <div class="work-item" 
+                    data-category="design"
+                    data-category-name="Design"
+                    data-title="Fluff & Crumb: Apparel"
+                    data-description="Custom pattern and merchandise design for 'Fluff & Crumb.' This piece features a repeat pattern of signature cookies and cakes applied to lifestyle apparel."
+                    data-date="2024"
+                    data-tags="Merchandise, Pattern Design, Branding">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/brand1.PNG" alt="Fluff and Crumb Bucket Hat">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Apparel Design</h3>
+                                    <p>Design · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Design Item 3 -->
+                <div class="work-item" 
+                    data-category="design"
+                    data-category-name="Design"
+                    data-title="Bakery Uniform Design"
+                    data-description="Uniform branding for 'Fluff & Crumb,' utilizing a professional color palette and logo integration to ensure a cohesive visual identity in a retail environment."
+                    data-date="2024"
+                    data-tags="Uniform, Branding, Layout">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/brand2.PNG" alt="Fluff and Crumb Apron">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Uniform Branding</h3>
+                                    <p>Design · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Item 4 - Logo -->
+                <div class="work-item" 
+                     data-category="design"
+                     data-category-name="Design"
+                     data-title="Custom Logo Collection"
+                     data-description="A collection of custom logos I've designed for various clients. Simple, minimal, but appealing and memorable."
+                     data-date="2024"
+                     data-tags="Logo Design, Branding, Minimal">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/logo.PNG" alt="Logo Design">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Custom Logo</h3>
+                                    <p>Design · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Art Item 1 -->
+                <div class="work-item" 
+                     data-category="digital"
+                     data-category-name="Digital Art"
+                     data-title="Digital Dreams"
+                     data-description="A collection of digital illustrations and character studies exploring themes of connection and atmosphere. Created and rendered using ibisPaint X."
+                     data-date="2023"
+                     data-tags="Digital Art, Digital Art, ibisPaint X, Mobile Illustration">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/digi4.jpg" alt="Digital Art">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Digital Dreams</h3>
+                                    <p>Digital Art · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Digital Art Item 2 -->
+                <div class="work-item" 
+                     data-category="digital"
+                     data-category-name="Digital Art"
+                     data-title="Digital Dreams"
+                     data-description="A collection of digital paintings exploring surreal landscapes and dreamlike scenarios. Created using Procreate and Photoshop.A collection of digital illustrations and character studies exploring themes of connection and atmosphere. Created and rendered using ibisPaint X."
+                     data-date="2023"
+                     data-tags="Digital Art, Digital Art, ibisPaint X, Mobile Illustration">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/digi2.jpg" alt="Digital Art">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Digital Dreams</h3>
+                                    <p>Digital Art · 2024</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Digital Art Item 3 -->
+                <div class="work-item" 
+                     data-category="digital"
+                     data-category-name="Digital Art"
+                     data-title="Digital Dreams"
+                     data-description="A collection of digital illustrations and character studies exploring themes of connection and atmosphere. Created and rendered using ibisPaint X."
+                     data-date="2023"
+                     data-tags="Digital Art, Digital Art, ibisPaint X, Mobile Illustration">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/digi1.jpg" alt="Digital Art">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Digital Dreams</h3>
+                                    <p>Digital Art · 2023</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Digital Art Item 4 -->
+                <div class="work-item" 
+                     data-category="digital"
+                     data-category-name="Digital Art"
+                     data-title="Digital Dreams"
+                     data-description="A collection of digital illustrations and character studies exploring themes of connection and atmosphere. Created and rendered using ibisPaint X."
+                     data-date="2023"
+                     data-tags="Digital Art, Digital Art, ibisPaint X, Mobile Illustration">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/digi3.jpg" alt="Digital Art">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Digital Dreams</h3>
+                                    <p>Digital Art · 2022</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crochet Item 1 -->
+                <div class="work-item" 
+                    data-category="crochet"
+                    data-category-name="Crochet"
+                    data-title="Amigurumi Collection"
+                    data-description="Hand-crocheted amigurumi creatures and a beautiful crochet bouquet. Each piece is made with love and attention to detail, perfect as gifts or home decor."
+                    data-date="2024"
+                    data-tags="Crochet, Amigurumi, Bouquet, Handmade">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/crochet1.jpg" alt="Crochet Amigurumi">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Amigurumi Collection</h3>
+                                    <p>Crochet · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Crochet Item 2 -->
+                <div class="work-item" 
+                    data-category="crochet"
+                    data-category-name="Crochet"
+                    data-title="Amigurumi Collection"
+                    data-description="Hand-crocheted amigurumi creatures and a beautiful crochet bouquet. Each piece is made with love and attention to detail, perfect as gifts or home decor."
+                    data-date="2024"
+                    data-tags="Crochet, Amigurumi, Bouquet, Handmade">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/crochet2.jpg" alt="Crochet Amigurumi">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Amigurumi Collection</h3>
+                                    <p>Crochet · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Crochet Item 3 -->
+                <div class="work-item" 
+                    data-category="crochet"
+                    data-category-name="Crochet"
+                    data-title="Amigurumi Collection"
+                    data-description="Hand-crocheted amigurumi creatures and a beautiful crochet bouquet. Each piece is made with love and attention to detail, perfect as gifts or home decor."
+                    data-date="2024"
+                    data-tags="Crochet, Amigurumi, Bouquet, Handmade">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/crochet3.jpg" alt="Crochet Amigurumi">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Amigurumi Collection</h3>
+                                    <p>Crochet · 2025</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Crochet Item 4 -->
+                <div class="work-item" 
+                    data-category="crochet"
+                    data-category-name="Crochet"
+                    data-title="Crochet Bouquet"
+                    data-description="A handmade crochet bouquet with various flowers, perfect for a forever gift that never wilts."
+                    data-date="2024"
+                    data-tags="Crochet, Bouquet, Flowers, Handmade">
+                    <div class="work-card">
+                        <div class="work-image">
+                            <img src="images/crochet4.jpg" alt="Crochet Bouquet">
+                            <div class="work-overlay">
+                                <div class="work-info">
+                                    <h3>Crochet Bouquet</h3>
+                                    <p>Crochet · 2024</p>
+                                    <button class="work-link"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="images/profile.JPEG" alt="Zarhanna" class="profile-img">
+                        <div class="experience-badge">
+                            <span class="years">3+</span>
+                            <span class="text">Years of<br>Creativity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="about-title">Turning Ideas Into <span class="gradient-text">Visual Stories</span></h2>
+                    <p class="about-description">I'm a multidisciplinary artist with a passion for capturing moments through photography, creating meaningful designs, and crafting unique pieces through digital art and crochet.</p>
+                    
+                    <!-- Skills Bars -->
+                    <div class="skills-container">
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Photography</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Digital Art</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Graphic Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>App Development</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Awards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Let's Create Something Amazing</h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>zarhannajeon@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+63 993 956 3671</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Philippines</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Social</h3>
+                        <p>@rn.zhn</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
+            
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img src="" alt="Gallery Image" id="modalImage">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle">Project Title</h2>
+                    <p id="modalCategory">Category</p>
+                    <p id="modalDescription">Project description goes here...</p>
+                    
+                    <div class="modal-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span id="modalDate">2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span id="modalTags">Design, Digital</span>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-navigation">
+                        <button class="modal-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button class="modal-next">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Z<span>.</span></div>
+                <p class="footer-text">Creating beautiful experiences through art and code</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/rn.zhn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/zarhanna"><i class="fab fa-facebook"></i></a>
+                    <a href="https://github.com/Rei0021"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/zarhanna-abdulharid-0634013b0/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Zarhanna. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
