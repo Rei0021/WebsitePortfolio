@@ -1250,3 +1250,97 @@ body.modal-open {
         transform: translateY(0);
     }
 }
+
+/* GitHub Button Styles */
+.modal-github {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #333;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.github-btn:hover {
+    background: white;
+    color: #333;
+    border-color: #333;
+    transform: translateY(-2px);
+}
+
+.github-btn i {
+    font-size: 1.2rem;
+}
+
+/* Skills Categories Styling */
+.skills-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.skills-column {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.skills-column:hover {
+    transform: translateY(-5px);
+}
+
+.skills-column-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.skills-column-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient-2);
+    border-radius: 2px;
+}
+
+/* Alternative styling for Option 1 */
+.skills-category {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border-left: 3px solid var(--primary);
+}
+
+.skills-category-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .skills-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

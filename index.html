@@ -81,6 +81,7 @@
                 <button class="filter-btn" data-filter="design">Design</button>
                 <button class="filter-btn" data-filter="digital">Digital Art</button>
                 <button class="filter-btn" data-filter="crochet">Crochet</button>
+                <button class="filter-btn" data-filter="code">Code</button>
             </div>
 
             <!-- Category Header -->
@@ -468,6 +469,55 @@
                     </div>
             </div>
 
+           <!-- Coding Project 1 - HealthTingi -->
+            <div class="work-item" 
+                data-category="code"
+                data-category-name="Mobile Development"
+                data-title="HealthTingi"
+                data-description="An offline mobile application that detects food ingredients using image recognition and recommends affordable Filipino recipes based on available ingredients and budget. Built using Flutter, TensorFlow Lite, and SQLite."
+                data-date="2025"
+                data-tags="Flutter, TensorFlow Lite, Mobile App, Machine Learning"
+                data-url="https://github.com/bryllemitra/2025_CP_HealthTingi.git">
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="images/health.JPEG" alt="HealthTingi Project">
+                        <div class="work-overlay">
+                            <div class="work-info">
+                                <h3>HealthTingi</h3>
+                                <p>Mobile Development · 2025</p>
+                                <a href="https://github.com/bryllemitra/2025_CP_HealthTingi.git" target="_blank" class="work-link" onclick="event.stopPropagation();">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coding Project 2 - PamuCode -->
+            <div class="work-item" 
+                data-category="code"
+                data-category-name="Web Development"
+                data-title="PamuCode"
+                data-description="A barangay management system designed to organize resident records and streamline the issuance of barangay documents. The system allows staff to manage resident information and generate certificates digitally."
+                data-date="2024"
+                data-tags="PHP, MySQL, Web System, Barangay Management"
+                data-url="https://github.com/KerthNathaniel/NewNexusware.git">
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="images/pamucode.JPEG" alt="PamuCode Project">
+                        <div class="work-overlay">
+                            <div class="work-info">
+                                <h3>PamuCode</h3>
+                                <p>Web Development · 2024</p>
+                                <a href="https://github.com/KerthNathaniel/NewNexusware.git" target="_blank" class="work-link" onclick="event.stopPropagation();">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -489,8 +539,11 @@
                     <h2 class="about-title">Turning Ideas Into <span class="gradient-text">Visual Stories</span></h2>
                     <p class="about-description">I'm a multidisciplinary artist with a passion for capturing moments through photography, creating meaningful designs, and crafting unique pieces through digital art and crochet.</p>
                     
-                    <!-- Skills Bars -->
-                    <div class="skills-container">
+                   <!-- Skills Bars -->
+                <div class="skills-container">
+                    <!-- Creative Skills Section -->
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Creative Skills</h3>
                         <div class="skill">
                             <div class="skill-info">
                                 <span>Photography</span>
@@ -518,16 +571,49 @@
                                 <div class="skill-progress" data-width="80"></div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Development Skills Section -->
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Development Skills</h3>
                         <div class="skill">
                             <div class="skill-info">
-                                <span>App Development</span>
+                                <span>HTML5</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>CSS3</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
                                 <span>70%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="70"></div>
                             </div>
                         </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>PHP</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65"></div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
                     <!-- Stats -->
                     <div class="stats-container">
@@ -630,6 +716,13 @@
                             <i class="fas fa-tag"></i>
                             <span id="modalTags">Design, Digital</span>
                         </div>
+                    </div>
+                    
+                    <!-- GitHub Button (hidden by default) -->
+                    <div class="modal-github" id="modalGithubContainer" style="display: none;">
+                        <a href="#" target="_blank" class="github-btn" id="modalGithubLink">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                     
                     <div class="modal-navigation">

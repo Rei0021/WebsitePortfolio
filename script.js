@@ -150,7 +150,8 @@ function getAllWorksFromDOM() {
             categoryName: item.dataset.categoryName || 
                          (item.dataset.category === 'photo' ? 'Photography' :
                           item.dataset.category === 'design' ? 'Design' :
-                          item.dataset.category === 'digital' ? 'Digital Art' : 'Crochet'),
+                          item.dataset.category === 'digital' ? 'Digital Art' : 
+                          item.dataset.category === 'code' ? 'Web Development' : 'Crochet'),
             title: item.dataset.title || item.querySelector('h3')?.textContent || 'Untitled',
             description: item.dataset.description || 'A beautiful piece of work.',
             date: item.dataset.date || '2024',
@@ -183,6 +184,7 @@ function showFilteredItems(filter) {
         const designItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'design');
         const digitalItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'digital');
         const crochetItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'crochet');
+        const codeItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'code');
 
         photoItems.slice(0, 2).forEach(item => {
             item.style.display = 'block';
@@ -200,7 +202,7 @@ function showFilteredItems(filter) {
             }, 100);
         });
         
-        digitalItems.slice(0, 2).forEach(item => {
+        digitalItems.slice(0, 3).forEach(item => {
             item.style.display = 'block';
             setTimeout(() => {
                 item.style.opacity = '1';
@@ -209,6 +211,14 @@ function showFilteredItems(filter) {
         });
         
         crochetItems.slice(0, 3).forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        codeItems.slice(0, 2).forEach(item => {
             item.style.display = 'block';
             setTimeout(() => {
                 item.style.opacity = '1';
@@ -240,7 +250,8 @@ function showFilteredItems(filter) {
                 'photo': 'Photography',
                 'design': 'Design',
                 'digital': 'Digital Art',
-                'crochet': 'Crochet'
+                'crochet': 'Crochet',
+                'code': 'Web Development'
             };
             categoryNameSpan.textContent = categoryNames[filter] || filter;
             categoryHeader.style.display = 'block';
@@ -366,7 +377,12 @@ let currentCategoryItems = [];
 function openCategoryGallery(button, category) {
     if (!button) return;
     
-    // Get ALL items from the clicked category (for modal navigation)
+    const parentLink = button.closest('a');
+    if (parentLink && parentLink.href && !parentLink.href.includes('#')) {
+        // Let the browser handle the link normally
+        return;
+    }
+    
     const allWorkItems = document.querySelectorAll('.work-item');
     const categoryItems = Array.from(allWorkItems).filter(
         item => item.dataset.category === category
@@ -374,7 +390,6 @@ function openCategoryGallery(button, category) {
     
     if (categoryItems.length === 0) return;
     
-    // Store ALL items from this category for navigation
     currentCategoryItems = categoryItems.map(item => {
         const img = item.querySelector('img');
         const title = item.querySelector('h3')?.textContent || 'Untitled';
@@ -382,10 +397,12 @@ function openCategoryGallery(button, category) {
         const categoryName = item.dataset.categoryName || 
                             (category === 'photo' ? 'Photography' :
                              category === 'design' ? 'Design' :
-                             category === 'digital' ? 'Digital Art' : 'Crochet');
+                             category === 'digital' ? 'Digital Art' : 
+                             category === 'code' ? 'Web Development' : 'Crochet');
         const description = item.dataset.description || 'A beautiful piece of work.';
         const date = item.dataset.date || '2024';
         const tags = item.dataset.tags || category;
+        const url = item.dataset.url; 
         
         return {
             image: img ? img.src : 'images/placeholder.jpg',
@@ -393,11 +410,11 @@ function openCategoryGallery(button, category) {
             categoryName: categoryName,
             description: description,
             date: date,
-            tags: tags
+            tags: tags,
+            url: url 
         };
     });
-    
-    // Find which item was clicked
+
     const workItem = button.closest('.work-item');
     currentGalleryIndex = categoryItems.indexOf(workItem);
     
@@ -428,6 +445,8 @@ function updateGalleryModal(index) {
     const modalDescription = document.getElementById('modalDescription');
     const modalDate = document.getElementById('modalDate');
     const modalTags = document.getElementById('modalTags');
+    const modalGithubContainer = document.getElementById('modalGithubContainer');
+    const modalGithubLink = document.getElementById('modalGithubLink');
     
     if (modalImage) modalImage.src = item.image;
     if (modalTitle) modalTitle.textContent = item.title;
@@ -435,6 +454,16 @@ function updateGalleryModal(index) {
     if (modalDescription) modalDescription.textContent = item.description;
     if (modalDate) modalDate.textContent = item.date;
     if (modalTags) modalTags.textContent = item.tags;
+    
+    // Show/hide GitHub button based on whether URL exists
+    if (modalGithubContainer && modalGithubLink) {
+        if (item.url) {
+            modalGithubLink.href = item.url;
+            modalGithubContainer.style.display = 'block';
+        } else {
+            modalGithubContainer.style.display = 'none';
+        }
+    }
 }
 
 // Close gallery modal
@@ -495,6 +524,7 @@ function handleGalleryKeyPress(e) {
     }
 }
 
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         showFilteredItems('all');
@@ -534,6 +564,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.work-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
+            // Check if this is a direct link (like GitHub)
+            if (this.href && !this.href.includes('#')) {
+                window.open(this.href, '_blank');
+                return;
+            }
+            
             const workItem = this.closest('.work-item');
             if (workItem) {
                 const category = workItem.dataset.category;
@@ -542,6 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Set initial cursor z-index
     setCursorZIndex(false);
 });
 
