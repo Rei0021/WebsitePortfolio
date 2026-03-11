@@ -5,11 +5,11 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 
-// Custom Cursor - FIXED: Better z-index management
+// Custom Cursor
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
 
-// Function to ensure cursor is on top
+// Function so cursor always on top
 function setCursorZIndex(modalActive) {
     if (cursor && cursorFollower) {
         if (modalActive) {
@@ -138,34 +138,134 @@ if (typedTextSpan) {
     setTimeout(type, 1000);
 }
 
-// Filter buttons
-const filterBtns = document.querySelectorAll('.filter-btn');
-const workItems = document.querySelectorAll('.work-item');
+// PORTFOLIO DATA
+function getAllWorksFromDOM() {
+    const items = document.querySelectorAll('.work-item');
+    const works = [];
+    
+    items.forEach((item, index) => {
+        works.push({
+            id: index + 1,
+            category: item.dataset.category,
+            categoryName: item.dataset.categoryName || 
+                         (item.dataset.category === 'photo' ? 'Photography' :
+                          item.dataset.category === 'design' ? 'Design' :
+                          item.dataset.category === 'digital' ? 'Digital Art' : 'Crochet'),
+            title: item.dataset.title || item.querySelector('h3')?.textContent || 'Untitled',
+            description: item.dataset.description || 'A beautiful piece of work.',
+            date: item.dataset.date || '2024',
+            tags: item.dataset.tags || item.dataset.category,
+            image: item.querySelector('img')?.src || 'images/placeholder.jpg',
+            element: item 
+        });
+    });
+    
+    return works;
+}
 
+// FILTER FUNCTIONS 
+const filterBtns = document.querySelectorAll('.filter-btn');
+const allWorks = getAllWorksFromDOM(); 
+let currentFilter = 'all';
+
+// Function to show items based on filter
+function showFilteredItems(filter) {
+    const allWorkItems = document.querySelectorAll('.work-item');
+    
+    allWorkItems.forEach(item => {
+        item.style.display = 'none';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+    });
+    
+    if (filter === 'all') {
+        const photoItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'photo');
+        const designItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'design');
+        const digitalItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'digital');
+        const crochetItems = Array.from(allWorkItems).filter(item => item.dataset.category === 'crochet');
+
+        photoItems.slice(0, 2).forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        designItems.slice(0, 2).forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        digitalItems.slice(0, 2).forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+        
+        crochetItems.slice(0, 3).forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    } else {
+        const itemsToShow = Array.from(allWorkItems).filter(
+            item => item.dataset.category === filter
+        );
+        
+        itemsToShow.forEach(item => {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    }
+    
+    const categoryHeader = document.getElementById('categoryHeader');
+    const categoryNameSpan = document.getElementById('currentCategoryName');
+    
+    if (filter === 'all') {
+        if (categoryHeader) categoryHeader.style.display = 'none';
+    } else {
+        if (categoryHeader && categoryNameSpan) {
+            const categoryNames = {
+                'photo': 'Photography',
+                'design': 'Design',
+                'digital': 'Digital Art',
+                'crochet': 'Crochet'
+            };
+            categoryNameSpan.textContent = categoryNames[filter] || filter;
+            categoryHeader.style.display = 'block';
+        }
+    }
+}
+
+// Filter buttons click handler
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(btn => btn.classList.remove('active'));
         btn.classList.add('active');
         
-        const filter = btn.dataset.filter;
-        
-        workItems.forEach(item => {
-            if (filter === 'all' || item.dataset.category === filter) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 300);
-            }
-        });
+        currentFilter = btn.dataset.filter;
+        showFilteredItems(currentFilter);
     });
 });
+
+// Back to All button
+const backBtn = document.getElementById('backToAllBtn');
+if (backBtn) {
+    backBtn.addEventListener('click', () => {
+        document.querySelector('.filter-btn[data-filter="all"]').click();
+    });
+}
 
 // Skill bars animation
 const skillBars = document.querySelectorAll('.skill-progress');
@@ -199,10 +299,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form
+// Contact form (formspree hehe)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const formData = {
@@ -212,25 +312,53 @@ if (contactForm) {
             message: document.getElementById('message')?.value || ''
         };
         
-        console.log('Form submitted:', formData);
-        
         const submitBtn = document.querySelector('.submit-btn');
-        if (submitBtn) {
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
-            submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+        
+        try {
+            // Send to Formspree
+            const response = await fetch('https://formspree.io/f/mgonkaee', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
             
-            contactForm.reset();
+            if (response.ok) {
+                // Success
+                submitBtn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = 'var(--gradient-2)';
+                    submitBtn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            submitBtn.innerHTML = 'Error! Try Again <i class="fas fa-exclamation-triangle"></i>';
+            submitBtn.style.background = 'linear-gradient(135deg, #ff4444, #cc0000)';
             
             setTimeout(() => {
                 submitBtn.innerHTML = originalText;
                 submitBtn.style.background = 'var(--gradient-2)';
+                submitBtn.disabled = false;
             }, 3000);
+            
+            console.error('Form submission error:', error);
         }
     });
 }
 
-// GALLERY MODAL 
+// GALLERY MODAL
 let currentGalleryIndex = 0;
 let currentCategoryItems = [];
 
@@ -238,26 +366,23 @@ let currentCategoryItems = [];
 function openCategoryGallery(button, category) {
     if (!button) return;
     
-    const filterBtn = document.querySelector('.filter-btn.active');
-    if (!filterBtn) return;
+    // Get ALL items from the clicked category (for modal navigation)
+    const allWorkItems = document.querySelectorAll('.work-item');
+    const categoryItems = Array.from(allWorkItems).filter(
+        item => item.dataset.category === category
+    );
     
-    const filter = filterBtn.dataset.filter;
+    if (categoryItems.length === 0) return;
     
-    let items = [];
-    if (filter === 'all') {
-        items = Array.from(document.querySelectorAll(`.work-item[data-category="${category}"]`));
-    } else {
-        items = Array.from(document.querySelectorAll('.work-item')).filter(item => {
-            return item.style.display !== 'none' && item.dataset.category === filter;
-        });
-    }
-    
-    if (items.length === 0) return;
-    
-    currentCategoryItems = items.map(item => {
+    // Store ALL items from this category for navigation
+    currentCategoryItems = categoryItems.map(item => {
         const img = item.querySelector('img');
         const title = item.querySelector('h3')?.textContent || 'Untitled';
         const category = item.dataset.category || 'Work';
+        const categoryName = item.dataset.categoryName || 
+                            (category === 'photo' ? 'Photography' :
+                             category === 'design' ? 'Design' :
+                             category === 'digital' ? 'Digital Art' : 'Crochet');
         const description = item.dataset.description || 'A beautiful piece of work.';
         const date = item.dataset.date || '2024';
         const tags = item.dataset.tags || category;
@@ -265,15 +390,16 @@ function openCategoryGallery(button, category) {
         return {
             image: img ? img.src : 'images/placeholder.jpg',
             title: title,
-            category: category,
+            categoryName: categoryName,
             description: description,
             date: date,
             tags: tags
         };
     });
     
+    // Find which item was clicked
     const workItem = button.closest('.work-item');
-    currentGalleryIndex = items.indexOf(workItem);
+    currentGalleryIndex = categoryItems.indexOf(workItem);
     
     updateGalleryModal(currentGalleryIndex);
     
@@ -305,7 +431,7 @@ function updateGalleryModal(index) {
     
     if (modalImage) modalImage.src = item.image;
     if (modalTitle) modalTitle.textContent = item.title;
-    if (modalCategory) modalCategory.textContent = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+    if (modalCategory) modalCategory.textContent = item.categoryName;
     if (modalDescription) modalDescription.textContent = item.description;
     if (modalDate) modalDate.textContent = item.date;
     if (modalTags) modalTags.textContent = item.tags;
@@ -317,7 +443,6 @@ function closeGallery() {
     if (modal) {
         modal.classList.remove('active');
         document.body.classList.remove('modal-open');
-        // FIXED: Reset cursor z-index when modal closes
         setCursorZIndex(false);
     }
     document.removeEventListener('keydown', handleGalleryKeyPress);
@@ -371,7 +496,11 @@ function handleGalleryKeyPress(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Close button
+    setTimeout(() => {
+        showFilteredItems('all');
+    }, 100);
+    
+    // Modal close button
     const closeBtn = document.getElementById('modalCloseBtn');
     if (closeBtn) {
         closeBtn.addEventListener('click', closeGallery);
